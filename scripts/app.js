@@ -9,7 +9,7 @@ inputElement.addEventListener('keyup', function () {
 });
 
 window.addEventListener('scroll', function () {
-  var rotation = 'translateY(-50%) rotateZ' + this.window.scrollY / 15 + 'deg)';
+  var rotation = 'translateY(-50%) rotateZ' + window.scrollY / 15 + 'deg)';
   pokeballElement.style.transform = rotation;
 });
 
