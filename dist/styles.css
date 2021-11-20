@@ -47,22 +47,11 @@ body {
   background-color: #fafafa;
   flex: 1 0 auto;
   margin: 0 0.5em;
+  width: 200px;
 }
 
 .poke-list-item:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-
-@media screen and (min-width: 40em) {
-  .poke-list-item {
-    max-width: calc(50% - 1em);
-  }
-}
-
-@media screen and (min-width: 60em) {
-  .poke-list-item {
-    max-width: calc(25% - 1em);
-  }
 }
 
 .poke-list-number {
@@ -75,4 +64,16 @@ body {
 
 .poke-list-title {
   align-self: center;
+}
+
+@media screen and (min-width: 40em) {
+  .poke-list-item {
+    max-width: calc(50% - 1em);
+  }
+}
+
+@media screen and (min-width: 60em) {
+  .poke-list-item {
+    max-width: calc(25% - 1em);
+  }
 }
