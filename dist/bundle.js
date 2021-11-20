@@ -47,6 +47,11 @@
                     return a.number > b.number ? 1 : -1;
                   })
                   .map(function (pokemon) {
+                    pokemon.image =
+                      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/'.concat(
+                        pokemon.number,
+                        '.png'
+                      );
                     pokemon.number = ('000' + pokemon.number).slice(-3);
                     return pokemon;
                   });
@@ -81,10 +86,17 @@
         createList: function createList(pkmList) {
           return pkmList
             .map(function (pokemon) {
-              return '\n        <li class="poke-list-item">\n          <img src="//serebii.net/pokedex-xy/icon/'
-                .concat(pokemon.number, '.png" />\n          <span>')
-                .concat(pokemon.number, ' - ')
-                .concat(pokemon.name, '</span>\n        </li>\n      ');
+              return '\n        <div class="poke-list-item card p-3 mb-5">\n          <img\n            class="card-img-top"\n            src="'
+                .concat(pokemon.image, '"\n            alt="')
+                .concat(
+                  pokemon.name,
+                  '"\n          />\n          <p class="poke-list-number">'
+                )
+                .concat(
+                  pokemon.number,
+                  '</p>\n          <h5 class="poke-list-title card-title">'
+                )
+                .concat(pokemon.name, '</h5>\n        </div>\n      ');
             })
             .join('');
         },
@@ -183,21 +195,14 @@
       __webpack_require__(1);
     /* harmony import */ var _list_service__WEBPACK_IMPORTED_MODULE_1__ =
       __webpack_require__(2);
+    // change that to _this on bundle.js after building
 
     var listFilter = '';
     var listElement = document.querySelector('#pokeList'),
-      inputElement = document.querySelector('#pokeFilter'),
-      pokeballElement = document.querySelector('#pokeballBack');
+      inputElement = document.querySelector('#pokeFilter');
     inputElement.addEventListener('keyup', function (event) {
       listFilter = event.target.value;
       setList();
-    });
-    window.addEventListener('scroll', function () {
-      var rotation = 'translateY(-50%) rotateZ('.concat(
-        window.scrollY / 15,
-        ')deg)'
-      );
-      pokeballElement.style.transform = rotation;
     });
 
     function setList() {

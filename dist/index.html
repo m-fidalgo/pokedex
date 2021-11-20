@@ -3,19 +3,31 @@
   <head>
     <meta charset="utf-8" />
     <title>PokéDex</title>
-    <link rel="shortcut icon" type="image/x-icon" href="/assets/icon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="./assets/icon.ico" />
+
+    <!-- stylesheets -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
     <link href="styles.css" rel="stylesheet" />
   </head>
   <body>
-    <img
-      class="pokeball-back"
-      id="pokeballBack"
-      src="https://hanashiro.github.io/pokedex/images/pokeball.svg"
-    />
+    <nav class="navbar">
+      <img
+        id="navImg"
+        alt="PokéDex"
+        src="https://cdn2.bulbagarden.net/upload/4/4b/Pok%C3%A9dex_logo.png"
+      />
+    </nav>
 
-    <input type="text" id="pokeFilter" placeholder="Search" />
+    <div class="mt-5 col-md-6 offset-md-3 col-10 offset-1">
+      <input type="text" id="pokeFilter" placeholder="Search" />
+    </div>
 
-    <ul class="poke-list" id="pokeList"></ul>
+    <div class="mt-5 poke-list" id="pokeList"></div>
 
     <script src="bundle.js"></script>
   </body>

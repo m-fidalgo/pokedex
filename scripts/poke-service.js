@@ -20,6 +20,7 @@ const PokeService = {
             .filter((pokemon) => pokemon.number < 1000)
             .sort((a, b) => (a.number > b.number ? 1 : -1))
             .map((pokemon) => {
+              pokemon.image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.number}.png`;
               pokemon.number = ('000' + pokemon.number).slice(-3);
               return pokemon;
             });
