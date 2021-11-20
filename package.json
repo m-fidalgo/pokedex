@@ -1,0 +1,27 @@
+{
+  "name": "pokedex",
+  "version": "1.0.0",
+  "description": "<h1 align=\"center\"><img src=\"https://cdn2.bulbagarden.net/upload/4/4b/Pok%C3%A9dex_logo.png\" alt=\"PokéDex\" /></h1>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/m-fidalgo/pokedex-js.git"
+  },
+  "author": "Maira Berlato",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/m-fidalgo/pokedex-js/issues"
+  },
+  "homepage": "https://github.com/m-fidalgo/pokedex-js#readme",
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "babel-loader": "^8.2.3",
+    "webpack": "^5.64.2",
+    "webpack-cli": "^4.9.1"
+  }
+}

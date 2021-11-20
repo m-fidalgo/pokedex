@@ -1,3 +1,5 @@
+// change that to _this on bundle.js after building
+
 import PokeService from './poke-service';
 import ListService from './list-service';
 
