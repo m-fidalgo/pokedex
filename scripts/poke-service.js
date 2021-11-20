@@ -1,53 +1,38 @@
-function request(url, callback) {
-  var xmlhttp = new XMLHttpRequest();
-
-  // listener
-  xmlhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-      var response = JSON.parse(this.responseText);
-      callback(response);
-    }
-  };
-
-  xmlhttp.open('GET', url, true);
-  xmlhttp.send();
-}
-
-var PokeService = {
-  url: 'https://dev.treinaweb.com.br/pokeapi/',
+const PokeService = {
+  get url() {
+    return 'https://dev.treinaweb.com.br/pokeapi';
+  },
   list: [],
-  listAll: function (callback) {
+  listAll: function () {
     if (this.list.length) {
-      callback(this.list);
+      return Promise.resolve(this.list);
     } else {
-      var that = this;
-
-      request(this.url + 'pokedex/1/', function (response) {
-        var pkmList = response.pokemon;
-
-        pkmList = pkmList
-          .map(function (pokemon) {
-            var number = that.getNumberFromURL(pokemon.resource_uri);
-            pokemon.number = number;
-            return pokemon;
-          })
-          .filter(function (pokemon) {
-            return pokemon.number < 1000;
-          })
-          .sort(function (a, b) {
-            return a.number > b.number ? 1 : -1;
-          })
-          .map(function (pokemon) {
-            pokemon.number = ('000' + pokemon.number).slice(-3);
-            return pokemon;
-          });
-
-        that.list = pkmList;
-        callback(pkmList);
-      });
+      return fetch(`${this.url}/pokedex/1/`)
+        .then((response) => response.json())
+        .then((response) => response.pokemon)
+        .then((pkmList) => {
+          return pkmList
+            .map((pokemon) => {
+              var number = that.getNumberFromURL(pokemon.resource_uri);
+              pokemon.number = number;
+              return pokemon;
+            })
+            .filter((pokemon) => pokemon.number < 1000)
+            .sort((a, b) => (a.number > b.number ? 1 : -1))
+            .map((pokemon) => {
+              pokemon.number = ('000' + pokemon.number).slice(-3);
+              return pokemon;
+            });
+        })
+        .then((list) => {
+          this.list = list;
+          return list;
+        });
     }
   },
   getNumberFromURL: function (url) {
     return parseInt(url.replace(/.*\/(\d+)\/$/, '$1'));
   },
 };
+
+export default PokeService;

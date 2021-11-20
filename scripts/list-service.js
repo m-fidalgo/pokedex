@@ -1,20 +1,16 @@
-var ListService = {
-  createList: function (pkmList) {
+const ListService = {
+  createList(pkmList) {
     return pkmList
-      .map(function (pokemon) {
-        return (
-          '<li class="poke-list-item" >' +
-          '<img src="//serebii.net/pokedex-xy/icon/' +
-          pokemon.number +
-          '.png" />' +
-          '<span>' +
-          pokemon.number +
-          ' - ' +
-          pokemon.name +
-          '</span>' +
-          '</li>'
-        );
+      .map((pokemon) => {
+        return `
+        <li class="poke-list-item">
+          <img src="//serebii.net/pokedex-xy/icon/${pokemon.number}.png" />
+          <span>${pokemon.number} - ${pokemon.name}</span>
+        </li>
+      `;
       })
       .join('');
   },
 };
+
+export default ListService;
