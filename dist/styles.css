@@ -32,9 +32,14 @@ body {
   border-radius: 30px;
 }
 
+#loading {
+  display: none;
+  justify-content: center;
+}
+
 .poke-list {
   text-transform: capitalize;
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   padding-left: 1em;
   padding-right: 1em;

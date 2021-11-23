@@ -5,7 +5,8 @@ import ListService from './list-service';
 
 let listFilter = '';
 const listElement = document.querySelector('#pokeList'),
-  inputElement = document.querySelector('#pokeFilter');
+  inputElement = document.querySelector('#pokeFilter'),
+  loadingElement = document.querySelector('#loading');
 
 inputElement.addEventListener('keyup', (event) => {
   listFilter = event.target.value;
@@ -14,9 +15,14 @@ inputElement.addEventListener('keyup', (event) => {
 
 function setList() {
   PokeService.listAll()
+    .then((loadingElement.style.display = 'flex'))
     .then(filterList)
     .then(ListService.createList)
-    .then((template) => (listElement.innerHTML = template));
+    .then((template) => (listElement.innerHTML = template))
+    .then(() => {
+      loadingElement.style.display = 'none';
+      listElement.style.display = 'flex';
+    });
 }
 
 function filterList(pkmList) {

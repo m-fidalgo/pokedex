@@ -199,7 +199,8 @@
 
     var listFilter = '';
     var listElement = document.querySelector('#pokeList'),
-      inputElement = document.querySelector('#pokeFilter');
+      inputElement = document.querySelector('#pokeFilter'),
+      loadingElement = document.querySelector('#loading');
     inputElement.addEventListener('keyup', function (event) {
       listFilter = event.target.value;
       setList();
@@ -208,10 +209,15 @@
     function setList() {
       _poke_service__WEBPACK_IMPORTED_MODULE_0__['default']
         .listAll()
+        .then((loadingElement.style.display = 'flex'))
         .then(filterList)
         .then(_list_service__WEBPACK_IMPORTED_MODULE_1__['default'].createList)
         .then(function (template) {
           return (listElement.innerHTML = template);
+        })
+        .then(function () {
+          loadingElement.style.display = 'none';
+          listElement.style.display = 'flex';
         });
     }
 

@@ -17,15 +17,17 @@
   </head>
   <body>
     <nav class="navbar">
-      <img
-        id="navImg"
-        alt="PokéDex"
-        src="https://cdn2.bulbagarden.net/upload/4/4b/Pok%C3%A9dex_logo.png"
-      />
+      <img id="navImg" alt="PokéDex" src="./assets/logo.png" />
     </nav>
 
     <div class="mt-5 col-md-6 offset-md-3 col-10 offset-1">
       <input type="text" id="pokeFilter" placeholder="Search" />
+    </div>
+
+    <div class="mt-5" id="loading">
+      <div class="spinner-border text-secondary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
     </div>
 
     <div class="mt-5 poke-list" id="pokeList"></div>
